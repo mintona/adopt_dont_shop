@@ -6,12 +6,12 @@ RSpec.describe "shelters index page", type: :feature do
                               address: "123 Arapahoe Ave",
                               city: "Boulder",
                               state: "CO",
-                              zip: 80301)
+                              zip: "80301")
     shelter_2 = Shelter.create(name: "Denver Shelter",
                               address: "345 Blake St",
                               city: "Denver",
                               state: "CO",
-                              zip: 80220)
+                              zip: "80220")
 
     visit "/shelters"
 
@@ -21,4 +21,4 @@ RSpec.describe "shelters index page", type: :feature do
     expect(page).to have_content(shelter_2.name)
     expect(page).to have_content("#{shelter_2.name}")
   end
-end 
+end
