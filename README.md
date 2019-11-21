@@ -120,7 +120,7 @@ Then I see the name of each shelter in the system
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 3, Shelter Show
 
