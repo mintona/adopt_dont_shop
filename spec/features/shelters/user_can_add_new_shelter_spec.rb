@@ -13,13 +13,15 @@ RSpec.describe "create new shelter", type: :feature do
      expect(current_path).to eq('/shelters/new')
     # see form for a new shelter
     # visit '/shelters/new'
-    # expect(page).to have_content 'Name'
-    # expect(page).to have_field '#Address'
-    # expect(page).to have_field '#City'
-    # expect(page).to have_field '#State'
-    # expect(page).to have_field '#Zip'
+    expect(page).to have_content('Name')
+    expect(page).to have_content('Address')
+    expect(page).to have_content('City')
+    expect(page).to have_content('State')
+    expect(page).to have_content('Zip')
+
+    expect(page).to have_button('Add Shelter')
     # fill out form w/ name, address, city, state, zip
-    fill_in 'name', with: 'Lafayette Shelter'
+    fill_in 'Name', with: 'Lafayette Shelter'
     fill_in 'Address', with: '789 South Public Rd'
     fill_in 'City', with: 'Lafayette'
     fill_in 'State', with: 'CO'
@@ -32,14 +34,6 @@ RSpec.describe "create new shelter", type: :feature do
     expect(current_path).to eq('/shelters')
         # now it has the new shelter listed
     expect(page).to have_content('Lafayette Shelter')
-    expect(page).to have_content('789 South Public Rd')
-    expect(page).to have_content('Lafayette')
-    expect(page).to have_content('CO')
-    expect(page).to have_content('80516')
-
-
-
-
 
   end
 end
