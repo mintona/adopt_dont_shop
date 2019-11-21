@@ -23,6 +23,7 @@ RSpec.describe "edit shelter", type: :feature do
     expect(page).to have_content('Zip')
 
     # how do i test that the form auto populated with existing info?
+    #expect(find_field('name').value.to eq -->"Boulder Shelter"
 
     # fill out all the stuff you want to change
     fill_in 'Name', with: 'Boulder Animal Shelter'
