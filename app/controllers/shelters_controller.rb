@@ -3,7 +3,30 @@ class SheltersController < ApplicationController
     @shelters = Shelter.all
   end
 
+  def new
+  end
+
   def show
     @shelter = Shelter.find(params[:id])
   end
+
+  def create
+    shelter = Shelter.new({
+      name: params[:shelter][:name],
+      address: params[:shelter][:address],
+      city: params[:shelter][:city],
+      state: params[:shelter][:state],
+      zip: params[:shelter][:zip]
+      })
+
+    shelter.save
+
+    redirect_to '/shelters'
+  end
+
+  # private
+  # def shelter_params
+  #   # params.permit(tags: ["name", "address", "city", "state", "zip"])
+  #   params.permit(preferences: {})
+  # end
 end

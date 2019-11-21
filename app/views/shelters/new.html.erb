@@ -1,0 +1,24 @@
+<!-- <form action="/shelters" method="post">
+  <input type="hidden" name="authenticity_tokey" value="<%= form_authenticity_token %>">
+  <p>Add a Shelter</p>
+  <p>Name: <input type='text' name='shelter[name]'/></p><br/>
+  <p>Address: <input type='text' name='shelter[address]'/></p><br/>
+  <p>City: <input type='text' name='shelter[city]'/></p><br/>
+  <p>State: <input type='text' name='shelter[state]'/></p><br/>
+  <p>Zip: <input type='text' name='shelter[zip]'/></p><br/>
+</form> -->
+
+<%= form_tag '/shelters' do %>
+  <%= label_tag :name %>
+  <%= text_field_tag :name %><br>
+  <%= label_tag :address %>
+  <%= text_field_tag :address %><br>
+  <%= label_tag :city %>
+  <%= text_field_tag :city %><br>
+  <%= label_tag :state %>
+  <%= text_field_tag :state %><br>
+  <%= label_tag :zip %>
+  <%= text_field_tag :zip %><br>
+
+  <%= submit_tag 'Add Shelter' %>
+<% end %>
