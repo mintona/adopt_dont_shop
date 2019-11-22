@@ -1,0 +1,10 @@
+<h1> <%= @pet.name %> </h1>
+
+<%= image_tag(@pet.image, :alt => "#{@pet.name} image") %>
+
+<h3>Description</h3>
+<p>I am a loveable, snuggly, cat! If you are anti snuggle, look elsewhere. I want to be pet at all times!</p>
+<h3> Age: <%= @pet.approximate_age %> </h3>
+Sex: <%= @pet.sex %>
+<p>If @pet.adoptable? then show the words "adoptable"</p>
+<p>If !@pet.adoptable? then show the words "pending adoption"</p>
