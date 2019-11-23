@@ -10,7 +10,7 @@ RSpec.describe "As a visitor" do
                                 zip: "80301")
 
       pet_1_image = "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg"
-      pet_1_description = "I am a loveable, snuggly, cat! If you are anti snuggle, look elsewhere. I want to be pet at all times!"
+      pet_1_description = "I am a loveable, snuggly, cat! If you are anti-snuggle, look elsewhere. I want to be pet at all times!"
       pet_1 = Pet.create!(image: pet_1_image,
                           name: "Alex",
                           approximate_age: "10",
@@ -28,19 +28,22 @@ RSpec.describe "As a visitor" do
       pet_2_description = 'I am the cutest puppy ever! I love to be around kids as long as they do not play too "ruff."'
       pet_2 = Pet.create!(image: pet_2_image,
                           name: "Marley",
-                          approximate_age: "2",
+                          approximate_age: "6",
                           sex: "Female",
                           shelter: shelter_2,
                           description: pet_2_description)
 
       visit "/pets/#{pet_1.id}"
-require "pry"; binding.pry
+
       expect(page).to have_content("#{pet_1.name}")
       expect(page).to have_content("#{pet_1.description}")
       expect(page).to have_content("#{pet_1.approximate_age}")
       expect(page).to have_content("#{pet_1.sex}")
+      #is there a way to make this more dynamic? this what i'm looking for in this case specifically
       expect(page).to have_content("Adoption Status: Adoptable")
       expect(page).to have_css("img[src*='#{pet_1_image}']")
+
+      expect(page).to_not have_content(pet_2.name)
     end
   end
 end
