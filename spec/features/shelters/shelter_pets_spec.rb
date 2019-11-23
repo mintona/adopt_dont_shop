@@ -31,15 +31,18 @@ RSpec.describe "As a visitor" do
       expect(page).to have_css("img[src*='#{pet_1_image}']")
 
       expect(page).to_not have_content(pet_2.name)
-      expect(page).to have_css("img[src*='#{pet_2_image}']")
+      expect(page).to_not have_css("img[src*='#{pet_2_image}']")
 
+# is this whole next section redundant?
+
+      visit "/shelters/#{shelter_2.id}/pets"
       expect(page).to have_content(pet_2.name)
       expect(page).to have_content(pet_2.approximate_age)
       expect(page).to have_content(pet_2.sex)
-      expect(page).to have_css("img[src*='#{pet__image}']")
+      expect(page).to have_css("img[src*='#{pet_2_image}']")
 
       expect(page).to_not have_content(pet_1.name)
-      expect(page).to have_css("img[src*='#{pet_1_image}']")
+      expect(page).to_not have_css("img[src*='#{pet_1_image}']")
     end
   end
 end
