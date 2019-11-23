@@ -1,10 +1,33 @@
-<h1>Pets</h1>
+<% if @pets == [] %>
+  <%= link_to 'Add Pet', "/shelters/#{@shelter.id}/pets/new" %>
 
-<% @pets.each do |pet| %>
-  <h2>Name: <%= pet.name %></h2>
-  <%= image_tag(pet.image, :alt => "#{pet.name} image") %>
-  <p>Approximate Age: <%= pet.approximate_age %> </p>
-  <p>Sex: <%= pet.sex %> </p>
-  <p>Current Shelter: <%= pet.shelter.name %> </p>
+<% elsif @pets == Pet.all %>
+
+  <h1>Pets</h1>
+
+  <% @pets.each do |pet| %>
+    <h2>Name: <%= pet.name %></h2>
+    <%= image_tag(pet.image, :alt => "#{pet.name} image") %>
+    <p>Approximate Age: <%= pet.approximate_age %> </p>
+    <p>Sex: <%= pet.sex %> </p>
+    <!-- Can there be an if statement to show the shelter name only if it's not on that route already?  -->
+    <p>Current Shelter: <%= pet.shelter.name %> </p>
+  <% end %>
+
+
+
+<% elsif @pets == @shelter.pets %>
+  <% @shelter_id = @pets.first.shelter_id %>
+  <% @pets.each do |pet| %>
+    <h2>Name: <%= pet.name %></h2>
+    <%= image_tag(pet.image, :alt => "#{pet.name} image") %>
+    <p>Approximate Age: <%= pet.approximate_age %> </p>
+    <p>Sex: <%= pet.sex %> </p>
+    <!-- Can there be an if statement to show the shelter name only if it's not on that route already?  -->
+    <!-- <p>Current Shelter: <%= pet.shelter.name %> </p> -->
+  <% end %>
+  <%= link_to 'Add Pet', "/shelters/#{@shelter_id}/pets/new" %>
+
+
 
 <% end %>
