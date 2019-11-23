@@ -7,7 +7,7 @@
 <h3> Age: <%= @pet.approximate_age %> </h3>
 <p>Sex: <%= @pet.sex %></p>
 <p>Adoption Status:
-<% if @pet.adoptable == false %>
+<% if @pet.adoptable %>
     Adoptable
 <% else %>
     Adoption Pending
