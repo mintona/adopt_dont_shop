@@ -24,12 +24,20 @@ RSpec.describe "As a visitor" do
     it "I see a link to delete the pet" do
       visit "/pets/#{@pet_1.id}"
 
-      has_link 'Delete Pet'
+      expect(page).to have_link 'Delete Pet'
       # expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
     end
 
-    it "I click the delete pet link to delete the pet" do
+    it "I click the delete pet link to remove pet from the pets index" do
+      visit '/pets'
 
+      expect(page).to have_content(@pet_1.name)
+
+      visit "/pets/#{@pet_1.id}"
+
+      click_link 'Delete Pet'
+
+      expect(current_path).to eq('/pets')
     end
   end
 end
