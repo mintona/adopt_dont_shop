@@ -54,7 +54,7 @@ RSpec.describe "As a visitor" do
       expect(page).to_not have_css("img[src*='#{@pet_1.image}']")
     end
 
-    it "I can see a link to edit each pets info" do
+    it "I can click a link to edit each pets info" do
       within(:css, "section##{@pet_1.id}") do
         click_on 'Edit Pet'
         expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
@@ -66,6 +66,16 @@ RSpec.describe "As a visitor" do
         click_on 'Edit Pet'
         expect(current_path).to eq("/pets/#{@pet_2.id}/edit")
       end
+    end
+
+    it "I can click a button to delete each pet " do
+      within(:css, "section##{@pet_1.id}") do
+        click_on 'Delete Pet'
+      end
+
+      expect(current_path).to eq("/pets")
+
+      expect(page).to_not have_content(@pet_1.name)
     end
     # it "there is a link to add a new adoptable pet for the shelter" do
     #   visit "shelters/#{shelter_1.id}/pets"
