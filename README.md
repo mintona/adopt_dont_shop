@@ -372,7 +372,7 @@ Then that link takes me to that Pet's show page
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 19, Pet Index Link
 
@@ -382,7 +382,7 @@ Then I see a link at the top of the page that takes me to the Pet Index
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 20, Shelter Index Link
 
@@ -392,7 +392,7 @@ Then I see a link at the top of the page that takes me to the Shelter Index
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 21, Shelter Pet Index Link
 
@@ -404,7 +404,7 @@ Then I see a link to take me to that shelter's pets page ('/shelters/:id/pets')
 ```
 [ ] done
 
-User Story 22, Styling
+User Story 22, Styling                                                                                                                                                                                                                            
 
 As a visitor
 When I visit any page on the site
@@ -422,7 +422,7 @@ User Story 23, Shelter Pet Count
 
 As a visitor
 When I visit a shelter pets index page
-I see a count of the number of pets at this shelter
+I see a count of the number of pets at this shelter                                                                    
 
 ```
 
