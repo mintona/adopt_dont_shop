@@ -49,6 +49,8 @@ RSpec.describe "As a visitor", type: :feature do
       expect(page).to_not have_content(@pet_2.name)
       expect(page).to_not have_css("img[src*='#{@pet_2.image}']")
 
+      click_on("#{@pet_1.name}")
+      expect(current_path).to eq("/pets/#{@pet_1.id}")
 # is this whole next section redundant?
 
       visit "/shelters/#{@shelter_2.id}/pets"
@@ -59,6 +61,9 @@ RSpec.describe "As a visitor", type: :feature do
 
       expect(page).to_not have_content(@pet_1.name)
       expect(page).to_not have_css("img[src*='#{@pet_1.image}']")
+
+      click_on("#{@pet_2.name}")
+      expect(current_path).to eq("/pets/#{@pet_2.id}")
     end
 
     it "I can click a link to edit each pets info" do
