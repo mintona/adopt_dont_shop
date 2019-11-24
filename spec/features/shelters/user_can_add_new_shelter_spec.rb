@@ -11,6 +11,7 @@ RSpec.describe "create new shelter", type: :feature do
      click_link "Add Shelter"
     # # reroute to '/shelters/new'
      expect(current_path).to eq('/shelters/new')
+     expect(page).to have_content('Add a Shelter')
     # see form for a new shelter
     # visit '/shelters/new'
     expect(page).to have_content('Name')
