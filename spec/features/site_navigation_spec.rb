@@ -35,13 +35,14 @@ RSpec.describe "As a visitor", type: :feature do
       visit "/shelters/#{@shelter_1.id}"
       click_on 'All Pets'
       expect(current_path).to eq('/pets')
-      
+
 #this is not an exhaustive list by any means
       paths = ["/shelters", "/pets", "/shelters/#{@shelter_1.id}", "/shelters/#{@shelter_1.id}/pets", "/pets/#{@pet_1.id}", "/shelters/#{@shelter_1.id}/edit", "/pets/#{@pet_1.id}/edit"]
 
       paths.each do |path|
         visit path
         expect(page).to have_link('All Pets')
+        expect(page).to have_link('All Shelters')
       end
     end
   end
