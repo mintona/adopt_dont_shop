@@ -34,7 +34,7 @@ RSpec.describe "As a visitor", type: :feature do
     end
 
     it "I can see each pets info" do
-
+#could add CSS tags here 
       expect(page).to have_content("Name: #{@pet_1.name}")
       expect(page).to have_content("Approximate Age: #{@pet_1.approximate_age}")
       expect(page).to have_content("Sex: #{@pet_1.sex}")
@@ -64,7 +64,7 @@ RSpec.describe "As a visitor", type: :feature do
       end
     end
 
-    xit "I can click a link to delete each pet" do
+    it "I can click a link to delete each pet" do
       within(:css, "section##{@pet_1.id}") do
         click_on 'Delete Pet'
         expect(current_path).to eq("/pets")
@@ -79,7 +79,7 @@ RSpec.describe "As a visitor", type: :feature do
 
       expect(page).to_not have_content(@pet_2.name)
     end
-  
+
   end
 
 end
