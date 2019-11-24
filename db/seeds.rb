@@ -46,3 +46,6 @@ pet_2 = Pet.create!(image: pet_2_image,
                     sex: "female",
                     shelter: shelter_2,
                     description: pet_2_description)
+
+# jelly fish : https://images.pexels.com/photos/1076758/pexels-photo-1076758.jpeg
+# peacock : https://images.pexels.com/photos/45911/peacock-plumage-bird-peafowl-45911.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260
