@@ -1,21 +1,54 @@
 require 'rails_helper'
 
-RSpec.describe "delete shelter", type: :feature do
-  it "can delete existing shelter" do
-    shelter_1 = Shelter.create(name: "Boulder Shelter",
-                              address: "123 Arapahoe Ave",
-                              city: "Boulder",
-                              state: "CO",
-                              zip: "80301")
-    visit "/shelters"
-    expect(page).to have_content(shelter_1.name)
+RSpec.describe "As a visitor", type: :feature do
+  describe "I can delete a shelter" do
+    before(:each) do
+      @shelter_1 = Shelter.create(name: "Boulder Shelter",
+                          address: "123 Arapahoe Ave",
+                          city: "Boulder",
+                          state: "CO",
+                          zip: "80301")
+    end
 
-    visit "/shelters/#{shelter_1.id}"
-    expect(page).to have_link('Delete Shelter')
+    it "if it has no pets" do
+      # shelter_1 = Shelter.create(name: "Boulder Shelter",
+      #                           address: "123 Arapahoe Ave",
+      #                           city: "Boulder",
+      #                           state: "CO",
+      #                           zip: "80301")
+      visit "/shelters"
 
-    click_link 'Delete Shelter'
+      expect(@shelter_1.pets.empty?).to eq(true)
+      expect(page).to have_content(@shelter_1.name)
 
-    expect(current_path).to eq("/shelters")
-    expect(page).to_not have_content(shelter_1.name)
+      visit "/shelters/#{@shelter_1.id}"
+      expect(page).to have_link('Delete Shelter')
+
+      click_link 'Delete Shelter'
+
+      expect(current_path).to eq("/shelters")
+      expect(page).to_not have_content(@shelter_1.name)
+    end
+
+    it "if it has pets" do
+      pet_1_image = "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg"
+      pet_1 = Pet.create!(image: pet_1_image,
+                          name: "Alex",
+                          approximate_age: "10",
+                          sex: "Male",
+                          shelter: @shelter_1)
+
+      visit "/shelters"
+      expect(@shelter_1.pets.empty?).to eq(false)
+      expect(page).to have_content(@shelter_1.name)
+
+      visit "/shelters/#{@shelter_1.id}"
+      expect(page).to have_link('Delete Shelter')
+
+      click_link 'Delete Shelter'
+
+      expect(current_path).to eq("/shelters")
+      expect(page).to_not have_content(@shelter_1.name)
+    end
   end
 end
