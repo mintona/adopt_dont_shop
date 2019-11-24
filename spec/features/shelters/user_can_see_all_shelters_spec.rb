@@ -42,6 +42,7 @@ RSpec.describe "As a visitor", type: :feature do
     end
 
     it "I can click a link to delete each shelter" do
+      #This is pretty redundant b/c i tested this in the delete section
       pet_1_image = "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg"
       pet_1 = Pet.create!(image: pet_1_image,
                           name: "Alex",
