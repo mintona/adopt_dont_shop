@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "As a visitor" do
+RSpec.describe "As a visitor", type: :feature do
   describe "When I visits the pets index" do
     it "I can see each pets info" do
       shelter_1 = Shelter.create(name: "Boulder Shelter",
@@ -29,7 +29,7 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content('Sex: Male')
       expect(page).to have_content('Current Shelter: Boulder Shelter')
       expect(page).to have_css("img[src*='#{pet_1_image}']")
-      #how to test for the alt text 
+      #how to test for the alt text
 
       expect(page).to have_content('Name: Marley')
       expect(page).to have_content('Approximate Age: 2')
