@@ -1,10 +1,10 @@
 <% if @shelter && @pets.empty? %>
-  <h1> <%= @shelter.name %> Pets </h1>
+  <h1> <%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %> Pets </h1>
   <%= link_to 'Add Pet', "/shelters/#{@shelter.id}/pets/new" %>
 
 <% elsif @shelter %>
 
-  <h1> <%= @shelter.name %> Pets </h1>
+  <h1> <%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %> Pets </h1>
     <% @shelter_id = @pets.first.shelter_id %>
     <% @pets.each do |pet| %>
       <section id=<%= "#{pet.id}"%>>
@@ -27,7 +27,7 @@
         <%= image_tag(pet.image, :alt => "#{pet.name} image") %>
         <p>Approximate Age: <%= pet.approximate_age %> </p>
         <p>Sex: <%= pet.sex %> </p>
-        <p>Current Shelter: <%= pet.shelter.name %> </p>
+        <p>Current Shelter: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}" %> </p>
         <%= link_to 'Edit Pet', "/pets/#{pet.id}/edit", method: :get %>
         <%= button_to 'Delete Pet', "/pets/#{pet.id}", method: :delete %>
 
