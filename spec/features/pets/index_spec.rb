@@ -49,6 +49,37 @@ RSpec.describe "As a visitor", type: :feature do
       expect(page).to have_css("img[src*='#{@pet_2.image}']")
 
     end
+
+    it "I can see a link to edit each pets info" do
+      within(:css, "section##{@pet_1.id}") do
+        click_on 'Edit Pet'
+        expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
+      end
+
+      visit '/pets'
+
+      within(:css, "section##{@pet_2.id}") do
+        click_on 'Edit Pet'
+        expect(current_path).to eq("/pets/#{@pet_2.id}/edit")
+      end
+    end
+
+    xit "I can click a link to delete each pet" do
+      within(:css, "section##{@pet_1.id}") do
+        click_on 'Delete Pet'
+        expect(current_path).to eq("/pets")
+      end
+
+      expect(page).to_not have_content(@pet_1.name)
+      # visit '/pets'
+      within(:css, "section##{@pet_2.id}") do
+        click_on 'Delete Pet'
+        expect(current_path).to eq("/pets")
+      end
+
+      expect(page).to_not have_content(@pet_2.name)
+    end
+  
   end
 
 end
