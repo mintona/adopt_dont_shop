@@ -62,10 +62,10 @@ RSpec.describe "As a visitor", type: :feature do
 
         end
 
-        xit "all of the pets information" do
-          #is this really necessary?
-          # test that the form has the original information from above
-        end
+        # xit "all of the pets information" do
+        #   #is this really necessary?
+        #   # test that the form has the original information from above
+        # end
       end
     end
   end
