@@ -36,6 +36,7 @@ RSpec.describe "As a visitor", type: :feature do
     it "I can see each pets info" do
 #could add CSS tags here
       expect(page).to have_content("Name: #{@pet_1.name}")
+      expect(page).to have_link("#{@pet_1.name}")
       expect(page).to have_content("Approximate Age: #{@pet_1.approximate_age}")
       expect(page).to have_content("Sex: #{@pet_1.sex}")
       expect(page).to have_content("Current Shelter: #{@pet_1.shelter.name}")
@@ -46,6 +47,7 @@ RSpec.describe "As a visitor", type: :feature do
 
 
       expect(page).to have_content("Name: #{@pet_2.name}")
+      expect(page).to have_link("#{@pet_2.name}")
       expect(page).to have_content("Approximate Age: #{@pet_2.approximate_age}")
       expect(page).to have_content("Sex: #{@pet_2.sex}")
       expect(page).to have_content("Current Shelter: #{@pet_2.shelter.name}")
