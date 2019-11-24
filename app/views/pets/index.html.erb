@@ -23,7 +23,7 @@
     <h1>All Pets</h1>
       <% @pets.each do |pet| %>
       <section id=<%= "#{pet.id}"%>>
-        <h2>Name: <%= pet.name %></h2>
+        <h2>Name: <%= link_to "#{pet.name}", "pets/#{pet.id}" %></h2>
         <%= image_tag(pet.image, :alt => "#{pet.name} image") %>
         <p>Approximate Age: <%= pet.approximate_age %> </p>
         <p>Sex: <%= pet.sex %> </p>
