@@ -30,7 +30,7 @@ RSpec.describe "As a visitor", type: :feature do
       expect(current_path).to eq("/shelters/#{@shelter_1.id}")
     end
 
-    it "I can click a link to edit each shelter" do
+    it "I can click a button to edit each shelter" do
 
       within(:css, "section##{@shelter_1.id}") do
         click_on 'Edit Shelter'
@@ -45,7 +45,7 @@ RSpec.describe "As a visitor", type: :feature do
       end
     end
 
-    it "I can click a link to delete each shelter" do
+    it "I can click a button to delete each shelter" do
       #This is pretty redundant b/c i tested this in the delete section
       pet_1_image = "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg"
       pet_1 = Pet.create!(image: pet_1_image,
