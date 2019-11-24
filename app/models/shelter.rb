@@ -1,5 +1,6 @@
 class Shelter < ApplicationRecord
-  has_many :pets
+  #does this need to be tested?
+  has_many :pets, dependent: :destroy
 
   validates_presence_of :name
   validates_presence_of :address
