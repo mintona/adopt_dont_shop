@@ -265,7 +265,7 @@ and I am redirected to the Shelter Pets Index page where I can see the new pet l
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 11, Pet Update
 
