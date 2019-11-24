@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "As a visitor" do
+RSpec.describe "As a visitor", type: :feature do
   describe "when I visit a shelters pets index page" do
     before(:each) do
       @shelter_1 = Shelter.create(name: "Boulder Shelter",
@@ -32,6 +32,13 @@ RSpec.describe "As a visitor" do
 
       visit "shelters/#{@shelter_1.id}/pets"
     end
+
+    it "I can click on the name of the shelter" do
+      click_on "#{@shelter_1.name}"
+
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+    end
+
     it "I can see each pet that can be adopted from that shelter" do
 
       expect(page).to have_content(@pet_1.name)
