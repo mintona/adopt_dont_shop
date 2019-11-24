@@ -1,0 +1,17 @@
+<h1> <%= @pet.name %> </h1>
+
+  <%= image_tag(@pet.image, :alt => "#{@pet.name} image") %>
+
+<h3>Description</h3>
+  <p> <%= @pet.description %> </p>
+<h3> Age: <%= @pet.approximate_age %> </h3>
+  <p>Sex: <%= @pet.sex %></p>
+  <p>Adoption Status:
+    <% if @pet.adoptable %>
+      Adoptable
+      <% else %>
+      Adoption Pending
+      <% end %> </p>
+
+<%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>
+<%= link_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
