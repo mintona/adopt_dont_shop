@@ -34,7 +34,7 @@ pet_1_description = "I am a loveable, snuggly, cat! If you are anti snuggle, loo
 pet_1 = Pet.create!(image: pet_1_image,
                     name: "Alex",
                     approximate_age: "10",
-                    sex: "male",
+                    sex: "Male",
                     shelter: shelter_1,
                     description: pet_1_description)
 
@@ -43,7 +43,7 @@ pet_2_description = 'I am the cutest puppy ever! I love to be around kids as lon
 pet_2 = Pet.create!(image: pet_2_image,
                     name: "Marley",
                     approximate_age: "2",
-                    sex: "female",
+                    sex: "Female",
                     shelter: shelter_2,
                     description: pet_2_description)
 
