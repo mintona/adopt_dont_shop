@@ -30,7 +30,14 @@ RSpec.describe "As a visitor", type: :feature do
                           sex: "Female",
                           shelter: @shelter_2)
 
-      visit "shelters/#{@shelter_1.id}/pets"
+      visit "/shelters/#{@shelter_1.id}/pets"
+    end
+
+    it "there is a link to add a new adoptable pet for the shelter" do
+
+      click_link "Add Pet"
+
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets/new")
     end
 
     it "I can click on the name of the shelter" do
@@ -67,6 +74,7 @@ RSpec.describe "As a visitor", type: :feature do
     end
 
     it "I can click a link to edit each pets info" do
+
       within(:css, "section##{@pet_1.id}") do
         click_on 'Edit Pet'
         expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
@@ -89,13 +97,10 @@ RSpec.describe "As a visitor", type: :feature do
 
       expect(page).to_not have_content(@pet_1.name)
     end
-    # it "there is a link to add a new adoptable pet for the shelter" do
-    #   visit "shelters/#{shelter_1.id}/pets"
-    #
-    #   click_link "Add Pet"
-    #
-    #   expect(current_path).to eq("/shelters/:shelter_id/pets/new")
-    #
-    # end
+
+    it "I see the count of total pets at the shelter" do
+
+      expect(page).to have_content("Number of Pets: #{@shelter_1.pets.pet_count}")
+    end
   end
 end
