@@ -10,4 +10,8 @@ class Pet < ApplicationRecord
   def self.pet_count
     count
   end
+
+  def self.sort_by_adoption_status
+    order(:adoptable).reverse
+  end
 end
