@@ -69,20 +69,16 @@ describe Pet, type: :model do
                                     description: "Watch out, I sting!",
                                     image: pet_3_image)
 
-      expected = [pet_1, pet_2, pet_3]
-
-      all_adoptable = expected.all? { |pet| pet.adoptable }
-
-      expect(shelter_1.pets).to eq(expected)
-      expect(shelter_1.pets.sort_by_adoption_status).to eq(expected)
+      pets = shelter_1.pets
+      all_adoptable = pets.all? { |pet| pet.adoptable }
       expect(all_adoptable).to eq true
+      expect(pets.first).to eq(pet_1)
 
+      pet_1.update(adoptable: false)
       pet_3.update(adoptable: false)
 
-      sorted_pets = shelter_1.pets.sort_by_adoption_status.to_a
-      expected_2 = [pet_1, pet_3, pet_2]
-
-      expect(sorted_pets).to eq(expected_2)
+      sorted_pets = shelter_1.pets.sort_by_adoption_status
+      expect(sorted_pets.first).to eq(pet_2)
     end
 
   end
