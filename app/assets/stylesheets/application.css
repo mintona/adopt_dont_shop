@@ -17,6 +17,8 @@
 body {
   font-family: Arial, Helvetica, sans-sans-serif;
   padding: 20px;
+  background-color: #EFEEEE;
+  /* color: #999999; */
 }
 
  img {
@@ -31,7 +33,7 @@ body {
  }
 
 nav {
-  background-color: lightblue;
+  background-color: #999999;
   height:25px;
   text-align: right;
   vertical-align: middle;
@@ -61,7 +63,7 @@ nav > a {
  }
 
  .button {
-   background-color: hotpink;
+   background-color: #D3C4BE;
    border-radius: 8px;
  }
 
@@ -69,7 +71,7 @@ nav > a {
    padding: 20px;
    display: grid;
    grid-gap: 2em;
-   background-color: white;
+   background-color: #EFEEEE;
    grid-template-columns: auto auto auto;
 
    /* grid-auto-rows: minmax(100px, 600px);
@@ -85,10 +87,10 @@ nav > a {
 
  .pet-info{
    padding:20px;
-   background:#eee;
+   background:#E9CCB1;
    border-radius: 8px;
  }
 
-.pet-info:nth-child(odd){
-  background-color: #ddd;
-}
+/* .pet-info:nth-child(odd){
+  background-color: #E8E6D9;
+} */
