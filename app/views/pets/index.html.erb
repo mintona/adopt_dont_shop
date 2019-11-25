@@ -5,33 +5,40 @@
 <% elsif @shelter %>
 
   <h1> <%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %> Pets </h1>
+  <%= link_to 'Add Pet', "/shelters/#{@shelter_id}/pets/new" %>
+
+
     <% @shelter_id = @pets.first.shelter_id %>
+    <section class="pet-grid">
+
     <% @pets.each do |pet| %>
-      <section id=<%= "#{pet.id}"%>>
+      <section id=<%= "#{pet.id}"%>, class="pet-info">
       <h2>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
       <%= image_tag(pet.image, :alt => "#{pet.name} image") %>
-      <p>Approximate Age: <%= pet.approximate_age %> </p>
-      <p>Sex: <%= pet.sex %> </p>
+      <p><b>Approximate Age:</b> <%= pet.approximate_age %> </p>
+      <p><b>Sex:</b> <%= pet.sex %> </p>
       <%= link_to 'Edit Pet', "/pets/#{pet.id}/edit", method: :get %>
-      <%= button_to 'Delete Pet', "/pets/#{pet.id}", method: :delete %>
+      <%= button_to 'Delete Pet', "/pets/#{pet.id}", method: :delete, class: "button" %>
 
       </section>
     <% end %>
-  <%= link_to 'Add Pet', "/shelters/#{@shelter_id}/pets/new" %>
+  </section>
+
 
   <% elsif  %>
     <h1>All Pets</h1>
-      <% @pets.each do |pet| %>
-      <section id=<%= "#{pet.id}"%>>
-        <h2>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
-        <%= image_tag(pet.image, :alt => "#{pet.name} image") %>
-        <p>Approximate Age: <%= pet.approximate_age %> </p>
-        <p>Sex: <%= pet.sex %> </p>
-        <p>Current Shelter: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}" %> </p>
-        <%= link_to 'Edit Pet', "/pets/#{pet.id}/edit", method: :get %>
-        <%= button_to 'Delete Pet', "/pets/#{pet.id}", method: :delete %>
+    <section class="pet-grid">
+
+    <% @pets.each do |pet| %>
+      <section id=<%= "#{pet.id}"%>, class="pet-info">
+      <h2>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
+      <%= image_tag(pet.image, :alt => "#{pet.name} image") %>
+      <p><b>Approximate Age:</b> <%= pet.approximate_age %> </p>
+      <p><b>Sex:</b> <%= pet.sex %> </p>
+      <%= link_to 'Edit Pet', "/pets/#{pet.id}/edit", method: :get %>
+      <%= button_to 'Delete Pet', "/pets/#{pet.id}", method: :delete, class: "button" %>
 
       </section>
-      <% end %>
-
+    <% end %>
+  </section>
 <% end %>
