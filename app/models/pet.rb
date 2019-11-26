@@ -6,6 +6,7 @@ class Pet < ApplicationRecord
   validates_presence_of :approximate_age
   validates_presence_of :sex
   validates_presence_of :shelter
+  validates_presence_of :description
 
   def self.pet_count
     count
