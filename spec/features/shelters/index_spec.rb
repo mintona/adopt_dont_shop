@@ -17,14 +17,12 @@ RSpec.describe "As a visitor", type: :feature do
       visit "/shelters"
     end
 
-    it "I can see all shelters names as links" do
-
+    it "I can see all shelter names" do
       expect(page).to have_content(@shelter_1.name)
-      # expect(page).to have_content("#{shelter_1.name}")
-
       expect(page).to have_content(@shelter_2.name)
-      # expect(page).to have_content("#{shelter_2.name}")
-      expect(page).to have_link("#{@shelter_2.name}")
+    end
+
+    it "I can click on the shelter name to visit its show page" do
       click_on("#{@shelter_1.name}")
 
       expect(current_path).to eq("/shelters/#{@shelter_1.id}")
