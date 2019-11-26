@@ -102,7 +102,7 @@ RSpec.describe "As a visitor", type: :feature do
       expect(page).to_not have_content(@pet_2.name)
     end
 
-    it "displays adoptable pets first" do
+    it "it displays adoptable pets first" do
       @pet_2.update(shelter: @shelter_1)
 
       pet_3_image = "https://images.pexels.com/photos/1076758/pexels-photo-1076758.jpeg"
