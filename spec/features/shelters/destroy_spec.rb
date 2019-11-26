@@ -27,10 +27,12 @@ RSpec.describe "As a visitor", type: :feature do
 
     it "if it has pets" do
       pet_1_image = "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg"
+      pet_1_description = "I am a loveable, snuggly, cat! If you are anti snuggle, look elsewhere. I want to be pet at all times!"
       pet_1 = Pet.create!(image: pet_1_image,
                           name: "Alex",
                           approximate_age: "10",
                           sex: "Male",
+                          description: pet_1_description,
                           shelter: @shelter_1)
 
       expect(@shelter_1.pets.empty?).to eq(false)

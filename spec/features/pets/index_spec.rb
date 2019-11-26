@@ -10,11 +10,13 @@ RSpec.describe "As a visitor", type: :feature do
                                 zip: "80301")
 
       pet_1_image = "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg"
+      pet_1_description = "I am a loveable, snuggly, cat! If you are anti snuggle, look elsewhere. I want to be pet at all times!"
 
       @pet_1 = Pet.create!(image: pet_1_image,
                           name: "Alex",
                           approximate_age: "10",
                           sex: "Male",
+                          description: pet_1_description,
                           shelter: @shelter_1)
 
       @shelter_2 = Shelter.create(name: "Denver Shelter",
@@ -24,10 +26,13 @@ RSpec.describe "As a visitor", type: :feature do
                                 zip: "80220")
 
       pet_2_image = "https://images.pexels.com/photos/39317/chihuahua-dog-puppy-cute-39317.jpeg"
+      pet_2_description = 'I am the cutest puppy ever! I love to be around kids as long as they do not play too "ruff."'
+
       @pet_2 = Pet.create!(image: pet_2_image,
                           name: "Marley",
                           approximate_age: "2",
                           sex: "Female",
+                          description: pet_2_description,
                           shelter: @shelter_2)
 
       visit '/pets'
