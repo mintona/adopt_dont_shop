@@ -29,7 +29,6 @@ RSpec.describe "As a visitor", type: :feature do
     end
 
     it "I can click a button to edit each shelter" do
-
       within(:css, "section##{@shelter_1.id}") do
         click_on 'Edit Shelter'
         expect(current_path).to eq("/shelters/#{@shelter_1.id}/edit")
@@ -44,24 +43,13 @@ RSpec.describe "As a visitor", type: :feature do
     end
 
     it "I can click a button to delete each shelter" do
-      #This is pretty redundant b/c i tested this in the delete section
-      pet_1_image = "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg"
-      pet_1 = Pet.create!(image: pet_1_image,
-                          name: "Alex",
-                          approximate_age: "10",
-                          sex: "Male",
-                          shelter: @shelter_1)
-
-      expect(@shelter_1.pets.empty?).to eq(false)
-      expect(@shelter_2.pets.empty?).to eq(true)
-
       within(:css, "section##{@shelter_1.id}") do
         click_on 'Delete Shelter'
         expect(current_path).to eq("/shelters")
       end
 
       expect(page).to_not have_content(@shelter_1.name)
-      # visit '/shelters'
+
       within(:css, "section##{@shelter_2.id}") do
         click_on 'Delete Shelter'
         expect(current_path).to eq("/shelters")
