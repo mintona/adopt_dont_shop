@@ -69,7 +69,7 @@ RSpec.describe "As a visitor", type: :feature do
       expect(current_path).to eq("/shelters/#{@pet_2.shelter.id}")
     end
 
-    it "I can see a link to edit each pets info" do
+    it "I can click a link to edit each pets info" do
       within(:css, "section##{@pet_1.id}") do
         click_on 'Edit Pet'
         expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
@@ -84,13 +84,16 @@ RSpec.describe "As a visitor", type: :feature do
     end
 
     it "I can click a link to delete each pet" do
+      expect(page).to have_content(@pet_1.name)
+      expect(page).to have_content(@pet_2.name)
+
       within(:css, "section##{@pet_1.id}") do
         click_on 'Delete Pet'
         expect(current_path).to eq("/pets")
       end
 
       expect(page).to_not have_content(@pet_1.name)
-      # visit '/pets'
+
       within(:css, "section##{@pet_2.id}") do
         click_on 'Delete Pet'
         expect(current_path).to eq("/pets")
@@ -115,9 +118,6 @@ RSpec.describe "As a visitor", type: :feature do
 
       expect(page.body.index("Marley")).to be < page.body.index("Alex")
       expect(page.body.index("Jelly")).to be < page.body.index("Alex")
-
     end
-
   end
-
 end
