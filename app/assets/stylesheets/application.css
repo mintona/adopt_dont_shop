@@ -40,7 +40,7 @@
 
 nav {
   /* background-color: #999999; */
-  background: linear-gradient(to right, #003366 0%, #336699 100%);
+  background: #98AEB3;
   height:25px;
   text-align: right;
   vertical-align: middle;
@@ -63,7 +63,11 @@ nav > a {
 
  a:link {
    text-decoration: none;
-   color: blue;
+   color: #98AEB3;
+ }
+
+ a:visited {
+   color: #99917A;
  }
 
  a:hover {
@@ -82,12 +86,16 @@ nav > a {
    /* border-radius: 30%; */
  }
 
+ a.shelter-name {
+   font-size: 25px;
+ }
+
  .pet-grid {
    padding: 20px;
    display: grid;
    grid-gap: 2em;
    background-color: #EFEEEE;
-   grid-template-columns: auto auto;
+   grid-template-columns: auto auto auto;
 
    /* grid-auto-rows: minmax(100px, 600px);
    justify-content: center;
@@ -102,7 +110,7 @@ nav > a {
 
  .pet-info{
    padding:20px;
-   background:#F4EEE1;
+   background:#DAE6E0;
    border-radius: 8px;
    max-width: 250px;
  }
