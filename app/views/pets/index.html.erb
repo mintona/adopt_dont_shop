@@ -17,7 +17,7 @@
       <p>Approximate Age: <%= pet.approximate_age %> </p>
       <p>Sex: <%= pet.sex %> </p>
       <%= link_to 'Edit Pet', "/pets/#{pet.id}/edit", method: :get %>
-      <%= button_to 'Delete Pet', "/pets/#{pet.id}", method: :delete %>
+      <%= button_to 'Delete Pet', "/pets/#{pet.id}", method: :delete, class: "button" %>
 
       </section>
     <% end %>
@@ -26,6 +26,7 @@
 
   <% elsif  %>
     <h1>All Pets</h1>
+    <section class="pet-grid"
       <% @pets.sort_by_adoption_status.each do |pet| %>
       <section id=<%= "#{pet.id}"%>>
         <h2>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
@@ -34,9 +35,9 @@
         <p>Sex: <%= pet.sex %> </p>
         <p>Current Shelter: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}" %> </p>
         <%= link_to 'Edit Pet', "/pets/#{pet.id}/edit", method: :get %>
-        <%= button_to 'Delete Pet', "/pets/#{pet.id}", method: :delete %>
+        <%= button_to 'Delete Pet', "/pets/#{pet.id}", method: :delete, class: "button" %>
 
       </section>
       <% end %>
-
+      </section>
 <% end %>
