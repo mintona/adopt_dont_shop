@@ -38,3 +38,12 @@
 
 
 <% end %>
+
+
+
+
+ArgumentError:
+       Invalid option(s) :alt, should be one of :above, :below
+, :left_of, :right_of, :near, :count, :minimum, :maximum, :bet
+ween, :text, :id, :class, :style, :visible, :obscured, :exact,
+ :exact_text, :normalize_ws, :match, :wait, :filter_set

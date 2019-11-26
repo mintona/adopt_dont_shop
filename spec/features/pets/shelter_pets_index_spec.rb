@@ -11,7 +11,7 @@ RSpec.describe "As a visitor", type: :feature do
 
       pet_1_image = "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg"
 
-      @pet_1 = Pet.create!(image: pet_1_image,
+      @pet_1 = Pet.create(image: pet_1_image,
                           name: "Alex",
                           approximate_age: "10",
                           sex: "Male",
@@ -24,7 +24,7 @@ RSpec.describe "As a visitor", type: :feature do
                                 zip: "80220")
 
       pet_2_image = "https://images.pexels.com/photos/39317/chihuahua-dog-puppy-cute-39317.jpeg"
-      @pet_2 = Pet.create!(image: pet_2_image,
+      @pet_2 = Pet.create(image: pet_2_image,
                           name: "Marley",
                           approximate_age: "2",
                           sex: "Female",
@@ -33,48 +33,37 @@ RSpec.describe "As a visitor", type: :feature do
       visit "/shelters/#{@shelter_1.id}/pets"
     end
 
-    it "there is a link to add a new adoptable pet for the shelter" do
+    it "I can see each pet that can be adopted from that shelter" do
+      expect(page).to have_content(@pet_1.name)
+      expect(page).to have_content(@pet_1.approximate_age)
+      expect(page).to have_content(@pet_1.sex)
+      expect(page).to have_css("img[src*='#{@pet_1.image}']")
+      expect(page).to have_css("img[alt='#{@pet_1.name} image']")
 
+      expect(page).to_not have_content(@pet_2.name)
+      expect(page).to_not have_content(@pet_2.approximate_age)
+      expect(page).to_not have_content(@pet_2.sex)
+      expect(page).to_not have_css("img[src*='#{@pet_2.image}']")
+      expect(page).to_not have_css("img[alt='#{@pet_2.name} image']")
+    end
+
+    it "there is a link to add a new adoptable pet for the shelter" do
       click_link "Add Pet"
 
       expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets/new")
     end
 
-    it "I can click on the name of the shelter" do
-      click_on "#{@shelter_1.name}"
+    it "I can click on pet name to visit the pet show page" do
+      click_on "#{@pet_1.name}"
+      expect(current_path).to eq("/pets/#{@pet_1.id}")
+    end
 
+    it "I can click on the name of the shelter to visit the shelter show page" do
+      click_on "#{@shelter_1.name}"
       expect(current_path).to eq("/shelters/#{@shelter_1.id}")
     end
 
-    it "I can see each pet that can be adopted from that shelter" do
-
-      expect(page).to have_content(@pet_1.name)
-      expect(page).to have_content(@pet_1.approximate_age)
-      expect(page).to have_content(@pet_1.sex)
-      expect(page).to have_css("img[src*='#{@pet_1.image}']")
-
-      expect(page).to_not have_content(@pet_2.name)
-      expect(page).to_not have_css("img[src*='#{@pet_2.image}']")
-
-      click_on("#{@pet_1.name}")
-      expect(current_path).to eq("/pets/#{@pet_1.id}")
-# is this whole next section redundant?
-
-      visit "/shelters/#{@shelter_2.id}/pets"
-      expect(page).to have_content(@pet_2.name)
-      expect(page).to have_content(@pet_2.approximate_age)
-      expect(page).to have_content(@pet_2.sex)
-      expect(page).to have_css("img[src*='#{@pet_2.image}']")
-
-      expect(page).to_not have_content(@pet_1.name)
-      expect(page).to_not have_css("img[src*='#{@pet_1.image}']")
-
-      click_on("#{@pet_2.name}")
-      expect(current_path).to eq("/pets/#{@pet_2.id}")
-    end
-
     it "I can click a link to edit each pets info" do
-
       within(:css, "section##{@pet_1.id}") do
         click_on 'Edit Pet'
         expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
@@ -99,7 +88,6 @@ RSpec.describe "As a visitor", type: :feature do
     end
 
     it "I see the count of total pets at the shelter" do
-
       expect(page).to have_content("Number of Pets: #{@shelter_1.pets.pet_count}")
     end
 
@@ -119,30 +107,6 @@ RSpec.describe "As a visitor", type: :feature do
 
       expect(page.body.index("Marley")).to be < page.body.index("Alex")
       expect(page.body.index("Jelly")).to be < page.body.index("Alex")
-      # within(:css, ".pet-grid") { page.all('section') }[0] do
-      #   expect(page).to have_content "#{@pet_2.name}"
-      #   expect(@pet_2.adoptable).to eq(true)
-      # end
-      #
-      # within(:css, ".pet-grid") { page.all('section') }.last do
-      #   expect(page).to have_content "#{@pet_1.name}"
-      #   expect(@pet_1.adoptable).to eq(false)
-      # end
-      # within all(".pet-grid")[0] do
-      #   expect(page).to have_content "#{@pet_2.name}"
-      #   expect(@pet_2.adoptable).to eq(true)
-      # end
-
-      # within all(".pet-grid")[1] do
-      #   expect(page).to have_content "#{pet_3.name}"
-      #   expect(pet_3.adoptable).to eq(true)
-      # end
-      #
-      # within all(".pet-grid")[2] do
-      #   expect(page).to have_content "#{@pet_1.name}"
-      #   expect(@pet_1.adoptable).to eq(false)
-      # end
-
     end
   end
 end
