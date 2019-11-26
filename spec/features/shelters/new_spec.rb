@@ -1,40 +1,27 @@
 require 'rails_helper'
 
-RSpec.describe "create new shelter", type: :feature do
-  it "can add new shelter" do
+RSpec.describe "As a visitor", type: :feature do
+  it "I can add a new shelter" do
 
-    # #visit shelter index page
-     visit '/shelters'
-    # # see link to create new shelter
-     expect(page).to have_link("Add Shelter")
-    # # click link
-     click_link "Add Shelter"
-    # # reroute to '/shelters/new'
-     expect(current_path).to eq('/shelters/new')
-     expect(page).to have_content('Add a Shelter')
-    # see form for a new shelter
-    # visit '/shelters/new'
-    expect(page).to have_content('Name')
-    expect(page).to have_content('Address')
-    expect(page).to have_content('City')
-    expect(page).to have_content('State')
-    expect(page).to have_content('Zip')
+    visit '/shelters'
 
-    expect(page).to have_button('Add Shelter')
-    # fill out form w/ name, address, city, state, zip
+    expect(page).to_not have_content('Lafayette Shelter')
+
+    click_link "Add Shelter"
+
+    expect(current_path).to eq('/shelters/new')
+    expect(page).to have_content('Add a Shelter')
+
     fill_in 'Name', with: 'Lafayette Shelter'
     fill_in 'Address', with: '789 South Public Rd'
     fill_in 'City', with: 'Lafayette'
     fill_in 'State', with: 'CO'
     fill_in 'Zip', with: "80516"
-    # # click button to submit
-    click_on 'Add Shelter'
-    # # post request sent to '/shelters'
-      # new shelter created
-        # redirected to shelter index page
-    expect(current_path).to eq('/shelters')
-        # now it has the new shelter listed
-    expect(page).to have_content('Lafayette Shelter')
 
+    click_on 'Add Shelter'
+
+    expect(current_path).to eq('/shelters')
+
+    expect(page).to have_content('Lafayette Shelter')
   end
 end
