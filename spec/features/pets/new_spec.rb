@@ -39,12 +39,6 @@ RSpec.describe "As a visitor", type: :feature do
     end
 
     describe "I click the add pet link to" do
-      it "see a header of the page" do
-        visit "/shelters/#{@shelter_1.id}/pets/new"
-
-        expect(page).to have_content('Add a Pet')
-      end
-
       it "fill out a form to add a new adoptable pet to that shelter" do
         pet_1_image = "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg"
         image = pet_1_image
@@ -55,6 +49,8 @@ RSpec.describe "As a visitor", type: :feature do
         description = "I am a loveable, snuggly, cat! If you are anti snuggle, look elsewhere. I want to be pet at all times!"
 
         visit "/shelters/#{@shelter_1.id}/pets/new"
+
+        expect(page).to have_content('Add a Pet')
 
         fill_in 'Image', with: image
         fill_in 'Name', with: name
