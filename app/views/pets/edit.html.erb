@@ -1,4 +1,4 @@
-<h1>Update <%= @pet.name %>'s Infomation</h1>
+<h1>Update <%= @pet.name %>'s Information</h1>
 
 <%= form_tag "/pets/#{@pet.id}", method: :patch do %>
   <%= label_tag :image %>
@@ -16,7 +16,7 @@
   <%= label_tag :sex %>
   <%= select_tag :sex, options_for_select(['Male', 'Female'], @pet.sex) %><br>
 
-  <%= submit_tag 'Update Pet' %>
+  <%= submit_tag 'Update Pet', class: "button" %>
 
 
 <% end %>

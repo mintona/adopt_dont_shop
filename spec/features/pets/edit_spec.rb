@@ -24,9 +24,11 @@ RSpec.describe "As a visitor", type: :feature do
     it "has a link to update that pet" do
       visit "/pets/#{@pet_1.id}"
 
-      click_link 'Update Pet'
+      click_on 'Update Pet'
 
       expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
+      
+      expect(page).to have_content("Update #{@pet_1.name}'s Information")
     end
 
     describe "I click the update pet link to" do
@@ -34,7 +36,7 @@ RSpec.describe "As a visitor", type: :feature do
         it "any of the pets information" do
 
           visit "/pets/#{@pet_1.id}/edit"
-
+          
           expect(find_field('Name').value).to eq(@original_name)
           expect(find_field('Image').value).to eq(@original_image)
           expect(find_field('Approximate age').value).to eq(@original_age)

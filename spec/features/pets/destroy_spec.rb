@@ -31,7 +31,7 @@ RSpec.describe "As a visitor", type: :feature do
 
       visit "/pets/#{@pet_1.id}"
 
-      click_link 'Delete Pet'
+      click_on 'Delete Pet'
 
       expect(current_path).to eq('/pets')
 
