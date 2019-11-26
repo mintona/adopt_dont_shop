@@ -102,5 +102,47 @@ RSpec.describe "As a visitor", type: :feature do
 
       expect(page).to have_content("Number of Pets: #{@shelter_1.pets.pet_count}")
     end
+
+    it "the adoptable pets are displayed first" do
+      @pet_2.update(shelter: @shelter_1)
+
+      pet_3_image = "https://images.pexels.com/photos/1076758/pexels-photo-1076758.jpeg"
+      pet_3 = @shelter_1.pets.create!(name: "Jelly",
+                                    approximate_age: "3",
+                                    sex: "Female",
+                                    description: "Watch out, I sting!",
+                                    image: pet_3_image)
+
+      @pet_1.update(adoptable: false)
+
+      visit "/shelters/#{@shelter_1.id}/pets"
+
+      expect(page.body.index("Marley")).to be < page.body.index("Alex")
+      expect(page.body.index("Jelly")).to be < page.body.index("Alex")
+      # within(:css, ".pet-grid") { page.all('section') }[0] do
+      #   expect(page).to have_content "#{@pet_2.name}"
+      #   expect(@pet_2.adoptable).to eq(true)
+      # end
+      #
+      # within(:css, ".pet-grid") { page.all('section') }.last do
+      #   expect(page).to have_content "#{@pet_1.name}"
+      #   expect(@pet_1.adoptable).to eq(false)
+      # end
+      # within all(".pet-grid")[0] do
+      #   expect(page).to have_content "#{@pet_2.name}"
+      #   expect(@pet_2.adoptable).to eq(true)
+      # end
+
+      # within all(".pet-grid")[1] do
+      #   expect(page).to have_content "#{pet_3.name}"
+      #   expect(pet_3.adoptable).to eq(true)
+      # end
+      #
+      # within all(".pet-grid")[2] do
+      #   expect(page).to have_content "#{@pet_1.name}"
+      #   expect(@pet_1.adoptable).to eq(false)
+      # end
+
+    end
   end
 end
