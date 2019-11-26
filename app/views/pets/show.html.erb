@@ -9,8 +9,11 @@
   <p>Adoption Status:
     <% if @pet.adoptable %>
       Adoptable
+      <%= link_to 'Change to Adoption Pending', "/pets/#{@pet.id}/adoptable", method: :patch %>
       <% else %>
       Adoption Pending
+      <%= link_to 'Change to Adoptable', "/pets/#{@pet.id}/pending", method: :patch %>
+
       <% end %> </p>
 
 <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>

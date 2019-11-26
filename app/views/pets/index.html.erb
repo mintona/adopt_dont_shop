@@ -1,12 +1,16 @@
 <% if @shelter && @pets.empty? %>
+<p> Number of Pets: <%= @shelter.pets.pet_count %> </p>
+
   <h1> <%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %> Pets </h1>
   <%= link_to 'Add Pet', "/shelters/#{@shelter.id}/pets/new" %>
 
 <% elsif @shelter %>
-
+<p> Number of Pets: <%= @shelter.pets.pet_count %> </p>
   <h1> <%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %> Pets </h1>
     <% @shelter_id = @pets.first.shelter_id %>
-    <% @pets.each do |pet| %>
+    <section class="pet-grid">
+
+    <% @pets.sort_by_adoption_status.each do |pet| %>
       <section id=<%= "#{pet.id}"%>>
       <h2>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
       <%= image_tag(pet.image, :alt => "#{pet.name} image") %>
@@ -17,11 +21,12 @@
 
       </section>
     <% end %>
+    </section>
   <%= link_to 'Add Pet', "/shelters/#{@shelter_id}/pets/new" %>
 
   <% elsif  %>
     <h1>All Pets</h1>
-      <% @pets.each do |pet| %>
+      <% @pets.sort_by_adoption_status.each do |pet| %>
       <section id=<%= "#{pet.id}"%>>
         <h2>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
         <%= image_tag(pet.image, :alt => "#{pet.name} image") %>

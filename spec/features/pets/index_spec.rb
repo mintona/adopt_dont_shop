@@ -86,6 +86,25 @@ RSpec.describe "As a visitor", type: :feature do
       expect(page).to_not have_content(@pet_2.name)
     end
 
+    it "displays adoptable pets first" do
+      @pet_2.update(shelter: @shelter_1)
+
+      pet_3_image = "https://images.pexels.com/photos/1076758/pexels-photo-1076758.jpeg"
+      pet_3 = @shelter_1.pets.create!(name: "Jelly",
+                                    approximate_age: "3",
+                                    sex: "Female",
+                                    description: "Watch out, I sting!",
+                                    image: pet_3_image)
+
+      @pet_1.update(adoptable: false)
+
+      visit "/pets"
+
+      expect(page.body.index("Marley")).to be < page.body.index("Alex")
+      expect(page.body.index("Jelly")).to be < page.body.index("Alex")
+
+    end
+
   end
 
 end
