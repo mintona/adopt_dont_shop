@@ -7,6 +7,7 @@ describe Pet, type: :model do
     it { should validate_presence_of :approximate_age}
     it { should validate_presence_of :sex}
     it { should validate_presence_of :shelter}
+    it { should validate_presence_of :description}
   end
 
   describe "model methods" do
@@ -80,8 +81,5 @@ describe Pet, type: :model do
       sorted_pets = shelter_1.pets.sort_by_adoption_status
       expect(sorted_pets.first).to eq(pet_2)
     end
-
   end
-
-
 end
