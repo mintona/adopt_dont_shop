@@ -16,7 +16,7 @@
   <%= label_tag :sex %>
   <%= select_tag :sex, options_for_select(['Male', 'Female'], @pet.sex) %><br>
 
-  <%= submit_tag 'Update Pet' %>
+  <%= submit_tag 'Update Pet', class: "button" %>
 
 
 <% end %>

@@ -14,9 +14,10 @@
   <%= text_field_tag :approximate_age %><br>
 
   <%= label_tag :sex %>
-  <%= select_tag :sex, options_for_select(['Male', 'Female']) %><br>
-
-  <%= submit_tag 'Add Pet' %>
+  <%= select_tag :sex, options_for_select(['Male', 'Female']) %>
+  <br>
+  <br>
+  <%= submit_tag 'Add Pet', class: "button" %>
 
 
 <% end %>

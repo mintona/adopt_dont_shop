@@ -2,19 +2,18 @@
 
   <%= image_tag(@pet.image, :alt => "#{@pet.name} image") %>
 
-<h3>Description</h3>
-  <p> <%= @pet.description %> </p>
-<h3> Age: <%= @pet.approximate_age %> </h3>
-  <p>Sex: <%= @pet.sex %></p>
-  <p>Adoption Status:
+  <p><b>Description:</b> <%= @pet.description %> <p>
+
+  <p><b>Age:</b> <%= @pet.approximate_age %> </p>
+  <p><b>Sex:</b> <%= @pet.sex %></p>
+  <p><b>Adoption Status:</b>
     <% if @pet.adoptable %>
       Adoptable
-      <%= link_to 'Change to Adoption Pending', "/pets/#{@pet.id}/adoptable", method: :patch %>
+      <%= button_to 'Change to Adoption Pending', "/pets/#{@pet.id}/adoptable", method: :patch, class: "button" %>
       <% else %>
       Adoption Pending
-      <%= link_to 'Change to Adoptable', "/pets/#{@pet.id}/pending", method: :patch %>
-
+      <%= button_to 'Change to Adoptable', "/pets/#{@pet.id}/pending", method: :patch, class: "button" %>
       <% end %> </p>
 
-<%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>
-<%= link_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
+<%= button_to 'Update Pet', "/pets/#{@pet.id}/edit", method: :get, class: "button" %>
+<%= button_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete, class: "button" %>
