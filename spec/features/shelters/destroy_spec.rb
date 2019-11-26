@@ -11,18 +11,13 @@ RSpec.describe "As a visitor", type: :feature do
     end
 
     it "if it has no pets" do
-      # shelter_1 = Shelter.create(name: "Boulder Shelter",
-      #                           address: "123 Arapahoe Ave",
-      #                           city: "Boulder",
-      #                           state: "CO",
-      #                           zip: "80301")
+      expect(@shelter_1.pets.empty?).to eq(true)
+
       visit "/shelters"
 
-      expect(@shelter_1.pets.empty?).to eq(true)
       expect(page).to have_content(@shelter_1.name)
 
       visit "/shelters/#{@shelter_1.id}"
-      expect(page).to have_link('Delete Shelter')
 
       click_link 'Delete Shelter'
 
@@ -38,12 +33,13 @@ RSpec.describe "As a visitor", type: :feature do
                           sex: "Male",
                           shelter: @shelter_1)
 
-      visit "/shelters"
       expect(@shelter_1.pets.empty?).to eq(false)
+
+      visit "/shelters"
+
       expect(page).to have_content(@shelter_1.name)
 
       visit "/shelters/#{@shelter_1.id}"
-      expect(page).to have_link('Delete Shelter')
 
       click_link 'Delete Shelter'
 
