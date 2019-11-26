@@ -64,7 +64,6 @@ RSpec.describe "As a visitor", type: :feature do
     end
 
     it "I can click a link to edit each pets info" do
-
       within(:css, "section##{@pet_1.id}") do
         click_on 'Edit Pet'
         expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
@@ -89,7 +88,6 @@ RSpec.describe "As a visitor", type: :feature do
     end
 
     it "I see the count of total pets at the shelter" do
-
       expect(page).to have_content("Number of Pets: #{@shelter_1.pets.pet_count}")
     end
 
@@ -109,30 +107,6 @@ RSpec.describe "As a visitor", type: :feature do
 
       expect(page.body.index("Marley")).to be < page.body.index("Alex")
       expect(page.body.index("Jelly")).to be < page.body.index("Alex")
-      # within(:css, ".pet-grid") { page.all('section') }[0] do
-      #   expect(page).to have_content "#{@pet_2.name}"
-      #   expect(@pet_2.adoptable).to eq(true)
-      # end
-      #
-      # within(:css, ".pet-grid") { page.all('section') }.last do
-      #   expect(page).to have_content "#{@pet_1.name}"
-      #   expect(@pet_1.adoptable).to eq(false)
-      # end
-      # within all(".pet-grid")[0] do
-      #   expect(page).to have_content "#{@pet_2.name}"
-      #   expect(@pet_2.adoptable).to eq(true)
-      # end
-
-      # within all(".pet-grid")[1] do
-      #   expect(page).to have_content "#{pet_3.name}"
-      #   expect(pet_3.adoptable).to eq(true)
-      # end
-      #
-      # within all(".pet-grid")[2] do
-      #   expect(page).to have_content "#{@pet_1.name}"
-      #   expect(@pet_1.adoptable).to eq(false)
-      # end
-
     end
   end
 end
