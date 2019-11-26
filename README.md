@@ -416,7 +416,7 @@ Then I should see a reasonably well styled page
 ## Extensions
 
 ```
-[ ] done
+[x] done
 
 User Story 23, Shelter Pet Count
 
@@ -427,7 +427,7 @@ I see a count of the number of pets at this shelter
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 24, Adoptable Pets Display First
 
@@ -453,7 +453,7 @@ And I see only the pets that are adoptable/pending adoption (respectively).
 
 
 ```
-[ ] done
+[x] done
 
 User Story 26, Change Pet's Adoptable/Pending Adoption Status
 
